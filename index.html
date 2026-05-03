@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dedicated Servers | HostingTemplateSite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #05070a;
+            --card-bg: #0d1117;
+            --primary: #4f46e5; 
+            --primary-glow: rgba(79, 70, 229, 0.3);
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --border: #1e293b;
+            --accent: #818cf8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(5, 7, 10, 0.8);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        .btn-portal {
+            background: var(--primary);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 500px;
+            background: var(--primary-glow);
+            filter: blur(120px);
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        .badge {
+            background: rgba(79, 70, 229, 0.1);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(79, 70, 229, 0.2);
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            margin-top: 24px;
+            letter-spacing: -3px;
+            line-height: 1;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 650px;
+            margin: 24px auto 0;
+        }
+
+        .pricing-section { padding: 80px 0 120px; }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            transition: 0.3s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            background: #11161d;
+        }
+
+        .card h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .price span { font-size: 1rem; color: var(--text-muted); }
+
+        .specs {
+            list-style: none;
+            margin-bottom: 32px;
+            flex-grow: 1;
+        }
+
+        .specs li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .specs li strong { color: var(--text-main); }
+
+        .btn-action {
+            background: var(--primary);
+            color: white;
+            padding: 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .btn-action:hover {
+            box-shadow: 0 0 20px var(--primary-glow);
+            transform: translateY(-1px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <div class="logo">HostingTemplateSite</div>
+            <ul class="nav-links">
+                <li><a href="https://emma-novapup.github.io/HostingTemplateSite/">Main Site</a></li>
+                <li><a href="https://emma-novapup.github.io/HostingTemplateSite-VPS/">VPS Hosting</a></li>
+                <li><a href="#">Dedicated</a></li>
+            </ul>
+            <a href="#" class="btn-portal">Client Portal</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-glow"></div>
+            <div class="container">
+                <span class="badge">Bare Metal Infrastructure</span>
+                <h1>Pure Performance. <br><span class="gradient-text">Zero Compromise.</span></h1>
+                <p>Full hardware control with dedicated Ryzen 9 and Intel Xeon E-Series processors.</p>
+            </div>
+        </section>
+
+        <section class="container pricing-section">
+            <div class="pricing-grid">
+                
+                <div class="card">
+                    <h3>Ryzen Dedicated</h3>
+                    <div class="price">$89<span>/mo</span></div>
+                    <ul class="specs">
+                        <li>CPU <strong>Ryzen 7 5800X</strong></li>
+                        <li>RAM <strong>64GB DDR4</strong></li>
+                        <li>Storage <strong>1TB NVMe Gen4</strong></li>
+                        <li>Uplink <strong>1Gbps Unmetered</strong></li>
+                    </ul>
+                    <a href="#" class="btn-action">Deploy Server</a>
+                </div>
+
+                <div class="card" style="border-color: var(--primary);">
+                    <div style="position:absolute; top:-12px; right:20px; background:var(--primary); font-size:0.7rem; padding:4px 12px; border-radius:100px; font-weight:800; color: white;">PERFORMANCE</div>
+                    <h3>Elite Dedicated</h3>
+                    <div class="price">$149<span>/mo</span></div>
+                    <ul class="specs">
+                        <li>CPU <strong>Ryzen 9 7950X</strong></li>
+                        <li>RAM <strong>128GB DDR5</strong></li>
+                        <li>Storage <strong>2x 1TB NVMe</strong></li>
+                        <li>Uplink <strong>10Gbps Burstable</strong></li>
+                    </ul>
+                    <a href="#" class="btn-action">Deploy Server</a>
+                </div>
+
+                <div class="card">
+                    <h3>Enterprise Metal</h3>
+                    <div class="price">$299<span>/mo</span></div>
+                    <ul class="specs">
+                        <li>CPU <strong>Dual Xeon Gold</strong></li>
+                        <li>RAM <strong>256GB ECC</strong></li>
+                        <li>Storage <strong>4TB Enterprise SSD</strong></li>
+                        <li>Uplink <strong>Dedicated 10Gbps</strong></li>
+                    </ul>
+                    <a href="#" class="btn-action">Deploy Server</a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 HostingTemplateSite. Enterprise Bare Metal Solutions.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
